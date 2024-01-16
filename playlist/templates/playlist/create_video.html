@@ -1,0 +1,11 @@
+{% extends 'Core/base.html' %}
+{% block title %}Создание видео {% endblock %}
+{% block content %}
+  <h1 class="text-center gap-25">Добавить новое видео</h1>
+  <form action="" method="post" class="mx-auto d-flex gap-1 flex-column" style="max-width: 300px;">
+    {% csrf_token %}
+    <input type="text" placeholder="Название" name="title" class="form-control" required />
+    <input type="text" placeholder="Код вставки" name="embed_code" class="form-control" required />
+    <button type="submit" class="btn btn-secondary">Отправить</button>
+  </form>
+{% endblock %}
