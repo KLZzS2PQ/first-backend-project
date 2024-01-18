@@ -1,33 +1,31 @@
+{% extends 'Core/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <link href="{% static 'Core/css/bootstrap.min.css' %}" rel="stylesheet" />
-    <script src="{% static 'Core/js/bootstrap.bundle.min.js' %}"></script>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body class="bg" data-bs-theme="dark">
-    {% include 'Core/includes/header.html' %}
-    <main>
-      <h1 class="text-center gap-25">Посты</h1>
-      <div class="flex-wrap d-flex justify-content-center gap-4">
-        {% for post in posts %}
-          {% if post.is_published %}
-            <div class="card" style="width: 18rem; max-width: 95%;">
-              <img src="{{ post.image.url }}" class="card-img-top object-fit-cover" alt="..." style="height: 150px;" />
-              <div class="card-body justify-content-between d-flex flex-column align-items-center ">
-                <div>
-                  <h5 class="card-title">{{ post.title }}</h5>
-                  <p class="card-text">{{ post.text }}</p>
-                </div>
+{% block title %}Посты{% endblock %}
+{% block content %}
+    <h1 class="text-center gap-25">Посты</h1>
+    <div class="flex-wrap d-flex justify-content-center gap-4">
+      {% for post in posts %}
+        {% if post.is_published %}
+          <div class="card" style="width: 18rem; max-width: 95%;">
+            <img src="{{ post.image.url }}" class="card-img-top object-fit-cover" alt="..." style="height: 150px;" />
+            <div class="card-body justify-content-between d-flex flex-column align-items-center ">
+              <div>
+                <h5 class="card-title">{{ post.title }}</h5>
+                <p class="card-text">{{ post.text }}</p>
+               <div>
+                <form action="{% url 'post_like'  %}" method="post">
+                  {% csrf_token %}
+               <button type="submit">
+                <img src="{% static "Core/img/heart.png" %}" alt="">
+               </button>
+               <input type="hidden" name="id" value="{{ post.id }}">
+              </form>
+                <span>{{ post.likes }}</span>
+               </div>
               </div>
             </div>
-          {% endif %}
-        {% endfor %}
-      </div>
-    </main>
-    <footer></footer>
-  </body>
-</html>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+{% endblock %}

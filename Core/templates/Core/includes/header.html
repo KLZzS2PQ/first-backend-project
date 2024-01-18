@@ -1,22 +1,25 @@
+{% load static %}
 <header>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">
-        <img src="" alt="Logo" width="30" height="24" class="d-inline-block align-text-top" />
-        Bootstrap
-      </a> 
+  <nav class="navbar navbar-expand-lg bg-body-tertiary ">
+    <div class="container-fluid justify-content-center">
+      <a class="navbar-brand" href="#"><img src="{% static 'Core/img/logo.png' %}" alt="Logo" width="40" height="40" class="d-inline-block align-text-top" /></a>
       <a class="navbar-brand" href="#">Navbar</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <button class="navbar-toggler border-0" 
+              type="button"
+              data-bs-toggle="collapse " 
+              data-bs-target="#navbarSupportedContent" 
+              aria-controls="navbarSupportedContent" 
+              aria-expanded="false" 
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center ">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'playlist'%}">Example</a>
+            <a class="nav-link" href="{% url 'playlist' %}">Playlist</a>
           </li>
           <li>
-            <a class="nav-link" href="{% url 'postlist'%}">Example</a>
+            <a class="nav-link" href="{% url 'posts_list' %}">Postlist</a>
           </li>
         </ul>
       </div>

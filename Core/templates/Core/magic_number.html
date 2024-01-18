@@ -1,13 +1,7 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <link href="{% static 'Core/css/bootstrap.min.css' %}" rel="stylesheet" />
-    <script src="{% static 'Core/js/bootstrap.bundle.min.js' %}"></script>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
+{% extends 'Core/base.html' %}
+{% block title %}{% endblock %}
+{% block content %}
+{% csrf_token %}
   <body class="d-flex flex-column" data-bs-theme="dark">
     <h1 class="text-center">Загада число</h1>
     {% if result %}
@@ -21,6 +15,4 @@
       {% csrf_token %}
       <input type="number" placeholder="Напиши цифру" name="number" class="form-control" />
       <button type="submit" class="btn btn-secondary">Отправить</button>
-    </form>
-  </body>
-</html>
+{% endblock %}
